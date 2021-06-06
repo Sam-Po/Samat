@@ -11,27 +11,27 @@ def main(request):
     }
     return render(request, 'www/index.html', context)
 
-# def new_contact(request):
-#     if request.method == "GET":
-#         return render(request, 'www/index.html')
-#     elif request.method == "POST":
-#         try:
-#             first_name = request.POST['first_name']
-#             last_name = request.POST['last_name']
-#             status = request.POST['status']
-#             deadline = request.POST['deadline']
-#             action = Action(name=name, status=status, deadline=deadline)
-#             action.save()
-#             return HttpResponseRedirect(reverse(''))
-#         except Exception as e:
-#             return HttpResponse(status=500)
-#
-# def show_contact(request):
-#     contact = Render.objects.get(id = contact_id)
-#     context = {
-#         'contact': contact,
-#     }
-#     return render(request, 'www/create.html', context)
+def new_contact(request):
+    if request.method == "GET":
+        return render(request, 'www/index.html')
+    elif request.method == "POST":
+        try:
+            first_name = request.POST['first_name']
+            last_name = request.POST['last_name']
+            phone = request.POST['phone']
+            email = request.POST['email']
+            contact = Record(first_name = first_name, last_name = last_name, phone = phone, email = email)
+            contact.save()
+            return HttpResponseRedirect(reverse(''))
+        except Exception as e:
+            return HttpResponse(status=500)
+
+def show_contact(request):
+    contact = Render.objects.get(id = contact_id)
+    context = {
+        'contact': contact,
+    }
+    return render(request, 'www/create.html', context)
 
 def update_contact(request):
     contact_id = request.POST['contact_id']
