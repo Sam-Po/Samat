@@ -1,11 +1,49 @@
-# from django.shortcuts import render
-# from django.http import HttpResponseRedirect, HttpResponse
-# from django.urls import reverse
+from django.shortcuts import render
+from django.http import HttpResponseRedirect, HttpResponse
+from django.urls import reverse
 
-# def main(request):
-#     contacts = Record.objects.all()
+from .models import Record
+
+def main(request):
+    contacts = Record.objects.all()
+    context = {
+        'contacts': contacts,
+    }
+    return render(request, '', context)
+
+# def new_contact(request):
+#     if request.method == "GET":
+#         return render(request, '')
+#     elif request.method == "POST":
+#         try:
+#             name = request.POST['name']
+#             status = request.POST['status']
+#             deadline = request.POST['deadline']
+#             action = Action(name=name, status=status, deadline=deadline)
+#             action.save()
+#             return HttpResponseRedirect(reverse(''))
+#         except Exception as e:
+#             return HttpResponse(status=500)
+#
+# def show_contact(request):
+#     contact = Render.objects.get(id = contact_id)
 #     context = {
-#         'contacts': contacts,
+#         'contact': contact,
 #     }
 #     return render(request, '', context)
+
+def update_contact(request):
+    contact_id = request.POST['contact_id']
+    new_first_name = request.POST['first_name']
+    new_last_name = request.POST['last_name']
+    new_phone = request.POST['phone']
+    new_email = request.POST['email']
+    contact = Record.objects.get(id = contact_id)
+    contact.first_name = new_first_name
+    contact.last_name = new_last_name
+    contact.phone = new_phone
+    contact.email = new_email
+    contact.save()
+    return HttpResponseRedirect(reverse('contact', args=(contact_id)))
+
 
