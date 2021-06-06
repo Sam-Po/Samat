@@ -10,10 +10,11 @@
   </tr>
   {% for person in contacts %}
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>{{ person.first_name }}</td>
+    <td>{{ person.last_name }}</td>
+    <td>{{ person.phone }}</td>
+    <td>{{ person.email }}</td>
   </tr>
+  {% endfor %}
 </table>
 {% endblock %}
