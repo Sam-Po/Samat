@@ -22,12 +22,12 @@ def new_contact(request):
             email = request.POST['email']
             contact = Record(first_name = first_name, last_name = last_name, phone = phone, email = email)
             contact.save()
-            return HttpResponseRedirect(reverse(''))
+            return HttpResponseRedirect(reverse('main'))
         except Exception as e:
             return HttpResponse(status=500)
 
 def show_contact(request):
-    contact = Render.objects.get(id = contact_id)
+    contact = Record.objects.get(id = contact_id)
     context = {
         'contact': contact,
     }
@@ -46,5 +46,11 @@ def update_contact(request):
     contact.email = new_email
     contact.save()
     return HttpResponseRedirect(reverse('contact', args=(contact_id)))
+
+def delete_contact(request):
+    contact_id = request.POST['contact_id']
+    contact = Record.objects.get(id = contact_id)
+    contact.delete()
+    return HttpResponseRedirect(request, 'main')
 
 
