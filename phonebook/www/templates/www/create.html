@@ -2,7 +2,7 @@
 {% block title %}create{% endblock %}
 {% block content %}
 <h1>Create contact</h1>
-<form action="url ''" method="post">
+<form action="url 'new_contact'" method="post">
   {% csrf_token %}
   <input type="text" name="first_name">
   <input type="text" name="last_name">

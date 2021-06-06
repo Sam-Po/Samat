@@ -9,14 +9,15 @@ def main(request):
     context = {
         'contacts': contacts,
     }
-    return render(request, '', context)
+    return render(request, 'www/index.html', context)
 
 # def new_contact(request):
 #     if request.method == "GET":
-#         return render(request, '')
+#         return render(request, 'www/index.html')
 #     elif request.method == "POST":
 #         try:
-#             name = request.POST['name']
+#             first_name = request.POST['first_name']
+#             last_name = request.POST['last_name']
 #             status = request.POST['status']
 #             deadline = request.POST['deadline']
 #             action = Action(name=name, status=status, deadline=deadline)
@@ -30,7 +31,7 @@ def main(request):
 #     context = {
 #         'contact': contact,
 #     }
-#     return render(request, '', context)
+#     return render(request, 'www/create.html', context)
 
 def update_contact(request):
     contact_id = request.POST['contact_id']
