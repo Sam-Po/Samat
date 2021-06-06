@@ -1,0 +1,14 @@
+{% extends 'www/base.html %}
+{% block title %}create{% endblock %}
+{% block content %}
+<h1>Create contact</h1>
+<form action="url ''" method="post">
+  {% csrf_token %}
+  <input type="text" name="first_name" value="">
+  <input type="text" name="last_name" value="">
+  <input type="text" name="phone" value="">
+  <input type="email" name="email" value="">
+  <input type="submit" value="Submit">
+</form>
+{% endblock %}
+
