@@ -45,7 +45,7 @@ def update_contact(request):
     contact.phone = new_phone
     contact.email = new_email
     contact.save()
-    return HttpResponseRedirect(reverse('contact', args=(contact_id)))
+    return HttpResponseRedirect(reverse('main'))
 
 def delete_contact(request):
     contact_id = request.POST['contact_id']
