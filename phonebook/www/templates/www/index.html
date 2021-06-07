@@ -20,7 +20,18 @@
         <input type="submit" value="update">
       </form>
     </td>
+    <td>
+      <form action="{% url 'delete_contact' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="contact_id" value="{{ person.id }}">
+        <input type="submit" value="delete">
+      </form>
+    </td>
   </tr>
   {% endfor %}
-</table>
+</table><br>
+<form action="{% url 'new_contact' %}">
+  {% csrf_token %}
+  <input type="submit" value="create new contact">
+</form>
 {% endblock %}

@@ -51,6 +51,6 @@ def delete_contact(request):
     contact_id = request.POST['contact_id']
     contact = Record.objects.get(id = contact_id)
     contact.delete()
-    return HttpResponseRedirect(request, 'main')
+    return HttpResponseRedirect(reverse('main'))
 
 
