@@ -4,6 +4,9 @@ from django.urls import reverse
 
 from .models import Record
 
+def redirect(request):
+    return HttpResponseRedirect(reverse('main'))
+
 def main(request):
     contacts = Record.objects.all()
     context = {
