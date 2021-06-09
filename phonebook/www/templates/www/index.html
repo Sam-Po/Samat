@@ -15,10 +15,7 @@
     <td>{{ person.phone }}</td>
     <td>{{ person.email }}</td>
     <td>
-      <form action="{% url 'contact' person.id %}" method="post">
-        {% csrf_token %}
-        <input type="submit" value="update">
-      </form>
+      <a href="{% url 'contact' person.id %}">Update</a>
     </td>
     <td>
       <form action="{% url 'delete_contact' %}" method="post">
