@@ -4,10 +4,14 @@
 <h1>Create contact</h1>
 <form action="{% url 'new_contact' %}"method="post">
   {% csrf_token %}
-  <input type="text" name="first_name">
-  <input type="text" name="last_name">
-  <input type="text" name="phone">
-  <input type="email" name="email">
+  <label for="fname">First name:</label>
+  <input type="text" name="first_name" id="fname"><br><br>
+  <label for="lname">Last name:</label>
+  <input type="text" name="last_name" id="lname"><br><br>
+  <label for="phone">Phone:</label>
+  <input type="text" name="phone" id="phone"><br><br>
+  <label for="email">Email:</label>
+  <input type="email" name="email" id="email"><br><br>
   <input type="submit" value="Submit">
 </form>
 {% endblock %}
